@@ -1,4 +1,5 @@
-#pragma once
+#ifndef URARA_BITS_HPP
+#define URARA_BITS_HPP
 
 #include <urara/types.hpp>
 
@@ -29,7 +30,7 @@ struct bits {
   }
 
   constexpr static uint32 clz(uint128 x) {
-    return uint64(x >> 64) ? clz(uint64(x >> 64)) : 64 + clz(uint64(n & UINT64_MAX));
+    return uint64(x >> 64) ? clz(uint64(x >> 64)) : 64 + clz(uint64(x & UINT64_MAX));
   }
 
   constexpr static uint32 ctz(uint32 x) {
@@ -53,8 +54,10 @@ struct bits {
   }
 
   constexpr static uint32 ilog2(uint128 x) {
-    return 128 - clz(x);
+    return 127 - clz(x);
   }
 };
 
-} // end namespace pe
+}
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef URARA_TYPES_HPP
+#define URARA_TYPES_HPP
 
 #include <cstdint>
 #include <ostream>
@@ -91,11 +92,13 @@ std::istream& operator >> (std::istream &is, int128 &v) {
 }
 
 constexpr uint128 operator "" _128u (const char *s) {
-  return cstr_to_uint128(str);
+  return cstr_to_uint128(s);
 }
 
 constexpr int128 operator "" _128 (const char *s) {
-  return cstr_to_int128(str);
+  return cstr_to_int128(s);
 }
 
 }
+
+#endif
